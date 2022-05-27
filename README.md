@@ -19,3 +19,6 @@ a Laravel application that helps a user understand how much quantity of a produc
   -  `curl –sS https://getcomposer.org/installer | php`
   -  `sudo mv composer.phar /usr/local/bin/composer`
   -  test if your composer works with `composer -V`
+
+## References
+1. use proper commit messages: https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/

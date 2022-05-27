@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class LedgerEntry extends Model
 {
     use HasFactory;
+
+    public function scopeFilter($query, array $filters){
+        if($filters['type'] ?? false){
+            $query->where('type','=',request(['type']));
+        }
+    }
 }

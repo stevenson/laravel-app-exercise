@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WebController;
 use App\Models\LedgerEntry;
 use Illuminate\Support\Facades\Route;
 
@@ -13,23 +14,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Store listings
+Route::get('/ledger/create', [WebController::class, 'create']);
+
 // all listings
-Route::get('/ledger', function () {
-    $heading = 'Ledger Entries';
-    return view('ledger_entries', [
-        'heading' => $heading,
-        'ledgerEntries' => LedgerEntry::all()
-    ]);
-});
+Route::get('/ledger', [WebController::class, 'index']);
 
-Route::get('/ledger/{id}', function ($id) {
-    $heading = 'Ledger Entry';
-    return view('ledger_entry', [
-        'heading' => $heading,
-        'ledgerEntry' => LedgerEntry::find($id)
-    ]);
-});
+// single listing
+Route::get('/ledger/{ledgerEntry}', [WebController::class, 'show']);
 
-Route::get('/search', function () {
-    return view('products');
-});
