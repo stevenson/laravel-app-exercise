@@ -30,7 +30,7 @@
         <a href="/"><img class="w-24" src="{{ asset('images/logo.png') }}" alt="" class="logo" /></a>
     </nav>
     {{-- VIEW OUTPUT --}}
-    <main class="bg-gray-50">
+    <main>
         {{ $slot }}
     </main>
 </body>
