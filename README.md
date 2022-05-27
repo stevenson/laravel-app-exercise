@@ -35,3 +35,7 @@ a Laravel application that helps a user understand how much quantity of a produc
 ## References
 
 1. use proper commit messages: https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/
+2. laravel naming conventions: 
+    - https://xqsit.github.io/laravel-coding-guidelines/docs/naming-conventions/
+    - https://www.php-fig.org/psr/psr-2/
+
