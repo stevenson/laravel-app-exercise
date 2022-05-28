@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Store listings
+Route::get('/', [WebController::class, 'apply']);
 
 // all listings
 Route::get('/ledger', [WebController::class, 'index']);

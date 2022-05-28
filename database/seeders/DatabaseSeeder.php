@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Carbon\Carbon;
-use App\Models\LedgerEntry;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
@@ -47,8 +46,6 @@ class LedgerEntryTableSeeder extends Seeder
     public function run()
     {
         DB::table('ledger_entries')->truncate();
-
-
 
         $ledgerEntries = [
             [
