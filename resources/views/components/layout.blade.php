@@ -30,6 +30,7 @@
     <main>
         {{ $slot }}
     </main>
+    <x-flash_message />
 </body>
 
 </html>

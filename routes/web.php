@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\WebController;
-use App\Models\LedgerEntry;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Store listings
-Route::get('/', [WebController::class, 'apply']);
+Route::get('/ledger/create', [WebController::class, 'create']); 
+    // NOTE: we are just using the create as the default because our app just applies product requests
+    // see readme
+Route::post('/ledger/store', [WebController::class, 'store']);
 
 // all listings
 Route::get('/ledger', [WebController::class, 'index']);
 
-// single listing
+// single listing - needs to be at the end because the last part of the slash will eat things ledger/create
 Route::get('/ledger/{ledgerEntry}', [WebController::class, 'show']);
 
