@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\LedgerEntriesController;
+use App\Http\Controllers\API\ProductApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +19,4 @@ use App\Http\Controllers\API\LedgerEntriesController;
 //     return $request->user();
 // });
 
-Route::apiResource('ledger', LedgerEntriesController::class);
+Route::apiResource('product/apply', ProductApplicationController::class);

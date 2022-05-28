@@ -22,7 +22,7 @@ class WebController extends Controller
 
     }
 
-    public function create(){
-        return view('ledger_entries.create');
+    public function apply(){
+        return view('ledger_entries.apply');
     }
 }
