@@ -19,4 +19,5 @@ use App\Http\Controllers\API\ProductApplicationController;
 //     return $request->user();
 // });
 
-Route::apiResource('product/apply', ProductApplicationController::class);
+Route::apiResource('product/apply', ProductApplicationController::class)
+    ->middleware('decorator');
