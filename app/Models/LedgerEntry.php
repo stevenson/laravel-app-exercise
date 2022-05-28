@@ -58,6 +58,7 @@ class LedgerEntry extends Model
     public static function applyRequest($queue, $runningCount, $quantity)
     {
         $fulfilled = array();
+        $runningCount = $runningCount-$quantity;
         while ($quantity > 0 && count($queue) !== 0) {
             $popped = array_shift($queue);
             if ($popped['quantity'] <= $quantity) {
@@ -74,7 +75,7 @@ class LedgerEntry extends Model
         }
         return array(
             'queue' => $queue,
-            'runningCount' => $runningCount-$quantity,
+            'runningCount' => $runningCount,
             'fulfilled' => $fulfilled
         );
     }

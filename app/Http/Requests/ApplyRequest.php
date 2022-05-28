@@ -28,5 +28,4 @@ class ApplyRequest extends FormRequest
             'quantity' => "required|numeric|max:$supply",
         ];
     }
-
 }
