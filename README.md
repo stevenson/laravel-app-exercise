@@ -11,6 +11,25 @@ a Laravel application that helps a user understand how much quantity of a produc
         -   this means we need to track the date of purchase
     -
 
+## Decisions
+1. laravel has a weird convension where the app and interface are tightly coupled with a lot of convensions; hence I decided to create both an api and a web controller. 
+    - I had to reuse some consolidate a number of functionalities used in multiple controllers in the model.
+2. Naming:
+    - API
+        - I looked at the app itself like a product ledger
+        - the model became a ledger entry: `ledgerEntry`
+        - the controllers are activities toward the ledger
+        - currently there is only a need for a product application activity
+            - `ApplicationController`
+        - I also created a DTO - data transfer object for validation
+            - `ApplyRequest`
+    - WEBAPP
+        - I create a web controller for just handling all the web app control.
+            - `WebController`
+3. Improvements:
+    - the app may be improved by caching since most of it needs to track a running value and a queue of available products.
+    - note: I used a queue since a part of the requirement is to use the product in order of which was purchased first.
+
 ## Setup
 
 1. install php 8
@@ -54,5 +73,6 @@ a Laravel application that helps a user understand how much quantity of a produc
     - the routes are visible via `php artisan route:list`
     - so far the consumption is the only route that is implemented
 2. Web
-    - product consumption page
+    - product consumption page is the main application
+        - `http://localhost:8000/ledger/create`
     - ledger listing and specific item
