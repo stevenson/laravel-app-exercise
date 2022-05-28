@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\ProductApplicationController;
+use App\Http\Controllers\API\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +19,5 @@ use App\Http\Controllers\API\ProductApplicationController;
 //     return $request->user();
 // });
 
-Route::apiResource('product/apply', ProductApplicationController::class)
+Route::apiResource('product/apply', ApplicationController::class)
     ->middleware('decorator');

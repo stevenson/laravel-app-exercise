@@ -11,7 +11,7 @@ class LedgerEntry extends Model
 
     protected $attributes = [
         'price' => 0,
-        "type" => "Application"
+        'type' => 'Application'
     ];
     protected $fillable = [
         'type',
@@ -30,50 +30,52 @@ class LedgerEntry extends Model
     public static function getQueueAndCount()
     {
         $ledger = LedgerEntry::all()
-            ->sortBy("bought_at");
+            ->sortBy('bought_at');
         $runningCount = 0;
         $queue = array();
         foreach ($ledger as $entry) {
             if ($entry->type == 'Purchase') {
                 $runningCount += $entry->quantity;
                 array_push($queue, array(
-                    "quantity" => $entry->quantity,
-                    "date" => $entry->bought_at,
-                    "price" => $entry->price
+                    'quantity' => $entry->quantity,
+                    'date' => $entry->bought_at,
+                    'price' => $entry->price
                 ));
             } else {
                 $quantity = $entry->quantity;
                 $runningCount -= $quantity;
-                $appliedRequest = LedgerEntry::applyRequest($queue, $quantity);
-                $queue = $appliedRequest["queue"];
+                $appliedRequest = 
+                    LedgerEntry::applyRequest($queue, $runningCount, $quantity);
+                $queue = $appliedRequest['queue'];
             }
         }
         return [
-            "runningCount" => $runningCount,
-            "queue" =>  $queue
+            'runningCount' => $runningCount,
+            'queue' =>  $queue
         ];
     }
 
-    public static function applyRequest($queue, $quantity)
+    public static function applyRequest($queue, $runningCount, $quantity)
     {
         $fulfilled = array();
         while ($quantity > 0 && count($queue) !== 0) {
             $popped = array_shift($queue);
-            if ($popped["quantity"] <= $quantity) {
+            if ($popped['quantity'] <= $quantity) {
                 $quantity = $quantity - $popped['quantity'];
                 array_push($fulfilled, $popped);
             } else {
                 $fulfillment = $popped;
-                $fulfillment["quantity"] =  $quantity;
-                $popped["quantity"] = $popped["quantity"] - $quantity;
+                $fulfillment['quantity'] =  $quantity;
+                $popped['quantity'] = $popped['quantity'] - $quantity;
                 $quantity = 0;
                 array_push($fulfilled, $fulfillment);
                 array_unshift($queue, $popped);
             }
         }
         return array(
-            "queue" => $queue,
-            "fulfilled" => $fulfilled
+            'queue' => $queue,
+            'runningCount' => $runningCount-$quantity,
+            'fulfilled' => $fulfilled
         );
     }
 }
