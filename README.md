@@ -48,10 +48,13 @@ a Laravel application that helps a user understand how much quantity of a produc
     - run seeder to seed the db
         - `php artisan db:seed`
         - note: if you check the seeding file I manually seed the db and did not use a factory. The reason for this is that the entries are order and value specific.
-4. (optional) install some dev tools
+4. run tests: `php artisan test`
+    - currently there are just a couple of test to demonstrate the base uses of the app
+5. (optional) install some dev tools
     - install clockwork 
         - there is a clockwork plugin for chrome and firefox
         - install clockwork to your laravel project `composer require itsgoingd/clockwork`
+
 
 ## References
 
@@ -75,4 +78,4 @@ a Laravel application that helps a user understand how much quantity of a produc
 2. Web
     - product consumption page is the main application
         - `http://localhost:8000/ledger/create`
-    - ledger listing and specific item
+    - other test routes for checking other laravel options -> ledger listing and specific item

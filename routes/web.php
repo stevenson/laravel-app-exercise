@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Store listings
+Route::get('/', [WebController::class, 'create']); // just so we have a base page
 Route::get('/ledger/create', [WebController::class, 'create']); 
     // NOTE: we are just using the create as the default because our app just applies product requests
     // see readme
